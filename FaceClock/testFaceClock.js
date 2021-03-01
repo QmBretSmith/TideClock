@@ -19,3 +19,19 @@ function setRotation(element, rotationRatio) {
 }
 
 setClock()
+
+
+
+
+
+const lat = 41.173;
+const lng = -73.182;
+
+fetch(`https://api.stormglass.io/v2/tide/extremes/point?lat=${lat}&lng=${lng}&start=2021-03-01&end=2021-03-10`, {
+  headers: {
+    'Authorization': '367bea9c-7aa0-11eb-b399-0242ac130002-367beb64-7aa0-11eb-b399-0242ac130002'
+  }
+}).then((response) => response.json()).then((jsonData) => {
+  // Do something with response data.
+  console.log(jsonData);
+});
