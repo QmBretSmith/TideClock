@@ -38,12 +38,17 @@ body {
 .clock .number3 { --rotation: 90deg; }
 .clock .number4 { --rotation: 120deg; }
 .clock .number5 { --rotation: 150deg; }
-.clock .number6 { --rotation: 180deg; }
+.clock .number6 { 
+  --rotation: 180deg;
+  transform: scale(1, 1);
+  margin-top: 92%;
+}
 .clock .number7 { --rotation: 210deg; }
 .clock .number8 { --rotation: 240deg; }
 .clock .number9 { --rotation: 270deg; }
 .clock .number10 { --rotation: 300deg; }
 .clock .number11 { --rotation: 330deg; }
+.clock .number12 { margin-top: 2%;}
 
 .clock .hand {
   --rotation: 0;
