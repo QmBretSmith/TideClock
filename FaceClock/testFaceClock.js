@@ -1,16 +1,17 @@
 const lat = 41.31539571168505;
 const lng = -73.37471490164708;
-//const today = Math.floor((new Date()).getTime() / 1000);
+const today = Math.floor((new Date()).getTime() / 1000);
+const endDate = new moment().add(10, 'day').utc().format("YYYY-MM-DDTHH:mm:ss.SSS[Z]");
 
 
-fetch(`https://api.stormglass.io/v2/tide/extremes/point?lat=${lat}&lng=${lng}&start=2021-03-05&end=2021-03-15`, {
+fetch(`https://api.stormglass.io/v2/tide/extremes/point?lat=${lat}&lng=${lng}&start=${today}&end=${endDate}`, {
   headers: {
     'Authorization': '367bea9c-7aa0-11eb-b399-0242ac130002-367beb64-7aa0-11eb-b399-0242ac130002'
   }
 }).then((response) => response.json()).then((jsonData) => {
   // Do something with response data.
   const results = jsonData.data.map(x => { return {...x, time: moment(x.time)} });
-  console.log(results);
+  console.table(results);
 });
 
 setInterval(setClock, 1000)
