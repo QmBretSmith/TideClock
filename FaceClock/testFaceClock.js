@@ -1,7 +1,7 @@
 const lat = 41.31539571168505;
 const lng = -73.37471490164708;
-const today = Math.floor((new Date()).getTime() / 1000);
-const endDate = new moment().add(10, 'day').utc().format("YYYY-MM-DDTHH:mm:ss.SSS[Z]");
+const today = new moment().subtract(13, 'hours').utc().format("YYYY-MM-DDTHH:mm:ss.SSS[Z]");
+const endDate = new moment().add(5, 'days').utc().format("YYYY-MM-DDTHH:mm:ss.SSS[Z]");
 
 
 fetch(`https://api.stormglass.io/v2/tide/extremes/point?lat=${lat}&lng=${lng}&start=${today}&end=${endDate}`, {
@@ -11,8 +11,9 @@ fetch(`https://api.stormglass.io/v2/tide/extremes/point?lat=${lat}&lng=${lng}&st
 }).then((response) => response.json()).then((jsonData) => {
   // Do something with response data.
   const results = jsonData.data.map(x => { return {...x, time: moment(x.time)} });
-  console.table(results);
-});
+  const hightides = results.filter(results => results.type === "high");
+  console.table(hightides);
+
 
 setInterval(setClock, 1000)
 
@@ -35,3 +36,4 @@ function setRotation(element, rotationRatio) {
 }
 
 setClock()
+});
