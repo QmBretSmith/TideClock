@@ -26,12 +26,14 @@ const minuteHand = document.querySelector('[data-minute-hand]')
 
 
 function setClock() {
-  const currentTide = nextHigh.diff(now, 'minutes');
+  const tideDuration = prevHigh.to(nextHigh, 'minutes');
+  const currentTide = now.to(nextHigh, 'minutes');
+  const minutesRatio = currentTide;
+  const hoursRatio = nextHigh.from(now);
   console.log(currentTide);
-  const minutesRatio = (currentTide.minutes()) / 60
-  const hoursRatio = (minutesRatio + currentTide.hours()) / 12
-  setRotation(minuteHand, minutesRatio)
-  setRotation(hourHand, hoursRatio)
+  console.log(hoursRatio);
+  setRotation(minuteHand, minutesRatio);
+  setRotation(hourHand, hoursRatio);
 }
 
 function setRotation(element, rotationRatio) {
