@@ -11,25 +11,26 @@ fetch(`https://api.stormglass.io/v2/tide/extremes/point?lat=${lat}&lng=${lng}&st
   // Do something with response data.
   const results = jsonData.data.map(x => { return {...x, time: moment(x.time)} });
   const hightides = results.filter(results => results.type === "high");
-  const now = moment()
+  const now = moment();
   const whereWouldNowBe = hightides.findIndex(elem => elem.time.isAfter(now));
-  console.log(whereWouldNowBe)
+  console.log(whereWouldNowBe);
   const prevHigh = moment(hightides[whereWouldNowBe - 1].time._d);
   const nextHigh = moment(hightides[whereWouldNowBe].time._d);
   console.log(prevHigh, nextHigh);
 
 
-setInterval(setClock, 60000)
+setInterval(setClock, 60000);
 
-const hourHand = document.querySelector('[data-hour-hand]')
-const minuteHand = document.querySelector('[data-minute-hand]')
+const hourHand = document.querySelector('[data-hour-hand]');
+const minuteHand = document.querySelector('[data-minute-hand]');
+const tideDuration = nextHigh.diff(prevHigh, 'minutes');
 
 
 function setClock() {
-  const tideDuration = prevHigh.to(nextHigh, 'minutes');
-  const currentTide = now.to(nextHigh, 'minutes');
-  const minutesRatio = currentTide;
-  const hoursRatio = nextHigh.from(now);
+  const currentTide =  now.diff(nextHigh, 'minutes');
+  const minutesRatio = tideDuration;
+  const hoursRatio = (currentTide / tideDuration);
+  console.log(tideDuration);
   console.log(currentTide);
   console.log(hoursRatio);
   setRotation(minuteHand, minutesRatio);
