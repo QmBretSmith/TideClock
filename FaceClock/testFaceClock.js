@@ -27,7 +27,8 @@ const tideDuration = nextHigh.diff(prevHigh, 'minutes');
 
 
 function setClock() {
-  const currentTide =  now.diff(nextHigh, 'minutes');
+  const newNow = now.add(1, 'minute');
+  const currentTide =  newNow.diff(nextHigh, 'minutes');
   const minutesRatio = tideDuration;
   const hoursRatio = (currentTide / tideDuration);
   console.log(tideDuration);
