@@ -87,19 +87,7 @@ img {
   border-radius: 50%;
 }
 
-.clock .hand.second {
-  width: 3px;
-  height: 48%;
-  background-color: red;
-}
-
-.clock .hand.minute {
-  width: 7px;
-  height: 45%;
-  background-color: black;
-}
-
-.clock .hand.hour {
+.clock .hand.tide {
   width: 13px;
   height: 27%;
   background-color: black;
