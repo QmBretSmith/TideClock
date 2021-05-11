@@ -4,8 +4,8 @@
 }
 
 body {
-  background: linear-gradient(to right, hsl(209, 92%, 36%), 
-  hsl(194, 100%, 50%));
+  background: linear-gradient(to right, hsl(209, 76%, 59%), 
+  hsl(170, 87%, 63%));
   display: flex;
   justify-content: center;
   align-items: center;
@@ -20,16 +20,16 @@ img {
   right: 0;
   top: 0;
   bottom: 0; 
-  width: 40%;
-  height: 40%; 
+  width: 20%;
+  height: 20%; 
 }
 
 .clock {
   width: 500px;
   height: 500px;
-  background-color: rgba(6, 228, 248, 0.6);
+  background-color: rgb(245, 238, 216);
   border-radius: 50%;
-  border: 2px solid black;
+  border: 5px solid black;
   position: relative;
 }
 
@@ -89,6 +89,17 @@ img {
 
 .clock .hand.tide {
   width: 13px;
-  height: 27%;
-  background-color: black;
+  height: 37%;
+  background-color: red;
+  background-image: linear-gradient(
+ to right,
+ #462523 0,
+ #cb6351 22%, 
+ #f6977a 45%,
+ #f6ddc0 50%,
+ #f6b27a 55%,
+ #cb6d51 78%,
+ #462323 100%
+ );
+  color:transparent;
 }

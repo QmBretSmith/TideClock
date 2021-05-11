@@ -1,9 +1,9 @@
 const lat = 41.31539571168505;
 const lng = -73.37471490164708;
-const today = new moment().subtract(2, 'days').utc().format("YYYY-MM-DDTHH:mm:ss.SSS[Z]");
+const startDate = new moment().subtract(2, 'days').utc().format("YYYY-MM-DDTHH:mm:ss.SSS[Z]");
 const endDate = new moment().add(5, 'days').utc().format("YYYY-MM-DDTHH:mm:ss.SSS[Z]");
 
-fetch(`https://api.stormglass.io/v2/tide/extremes/point?lat=${lat}&lng=${lng}&start=${today}&end=${endDate}`, {
+fetch(`https://api.stormglass.io/v2/tide/extremes/point?lat=${lat}&lng=${lng}&start=${startDate}&end=${endDate}`, {
   headers: {
     'Authorization': '367bea9c-7aa0-11eb-b399-0242ac130002-367beb64-7aa0-11eb-b399-0242ac130002'
   }
@@ -39,6 +39,8 @@ function setClock() {
   console.log(tideDuration);
   console.log(currentTide);
   console.log(tideRatio);
+  // these logs here were for testing as the project was coming together,
+  // they are being left in so its easy for someone to see whats being done, and when.
   setRotation(clockHand, tideRatio);
 }
 
